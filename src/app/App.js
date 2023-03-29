@@ -8,7 +8,7 @@ import { LoginForm } from '../features/auth/LoginForm';
 
 function App() {
   const dispatch = useDispatch();
-  const isOpen = useSelector(state => state.modal.isOpen);
+  // const isOpen = useSelector(state => state.modal.isOpen);
 
   const handleOpenModal = () => {
     dispatch(openModal());

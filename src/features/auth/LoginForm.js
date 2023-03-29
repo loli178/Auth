@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import { loginStart, loginSuccess, closeSession } from './authSlice';
 import { loginUser, logoutUser } from './authSlice';
 
 export function LoginForm() {
@@ -10,6 +10,7 @@ export function LoginForm() {
 
   const handleLogin = () => {
     dispatch(loginUser({ email, password }));
+    console.log(email, password);
   };
 
   const handleLogout = () => {
@@ -20,16 +21,15 @@ export function LoginForm() {
     <div>
       <h1>Login</h1>
       <form>
-        <label label="Email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
+        <label>Email</label>
+        <input name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
         <br />
-        <label label="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <label>Password</label>
+        <input name="password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
         <br />
-        <button variant="contained" color="primary" onClick={handleLogin}>
-          Login
-        </button>
-        <button variant="contained" color="secondary" onClick={handleLogout}>
-          Logout
-        </button>
+        <button onClick={handleLogin}>Login</button>
+        <br></br>
+        <button onClick={handleLogout}>Logout</button>
       </form>
     </div>
   );
